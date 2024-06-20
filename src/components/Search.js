@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useState } from "react"
 
-function Search() {
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log("submitted");
+function Search({ listings, setListings, originalListings }) {
+  const [search, setSearch] = useState("")
+
+  function handleSubmit(event) {
+    event.preventDefault()
+
+    if (search === "") {
+      setListings(originalListings)
+    } else {
+      const listingsToDisplay = listings.filter((listing) =>
+        listing.description.includes(search)
+      )
+      setListings(listingsToDisplay)
+    }
+  }
+
+  function handleSearchChange(event) {
+    setSearch(event.target.value)
   }
 
   return (
@@ -12,12 +26,12 @@ function Search() {
         type="text"
         id="search"
         placeholder="search free stuff"
-        value={""}
-        onChange={(e) => console.log(e.target.value)}
+        value={search}
+        onChange={handleSearchChange}
       />
       <button type="submit">🔍</button>
     </form>
-  );
+  )
 }
 
-export default Search;
+export default Search

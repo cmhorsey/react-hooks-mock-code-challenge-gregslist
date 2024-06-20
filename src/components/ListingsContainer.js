@@ -9,9 +9,9 @@ function ListingsContainer({ listings, setListings }) {
           return (
             <ListingCard
               key={listing.id}
-              description={listing.description}
-              location={listing.location}
-              image={listing.image}
+              listing={listing}
+              listings={listings}
+              setListings={setListings}
             />
           )
         })}
