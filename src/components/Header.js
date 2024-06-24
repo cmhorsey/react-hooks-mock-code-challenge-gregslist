@@ -1,5 +1,6 @@
 import React from "react"
 import Search from "./Search"
+import ListingForm from "./ListingForm"
 
 function Header({ listings, setListings, originalListings }) {
   return (
@@ -10,11 +11,17 @@ function Header({ listings, setListings, originalListings }) {
         </span>
         gregslist
       </h1>
-      <Search
-        listings={listings}
-        setListings={setListings}
-        originalListings={originalListings}
-      />
+
+      <div>
+        <Search
+          listings={listings}
+          setListings={setListings}
+          originalListings={originalListings}
+        />
+      </div>
+      <div>
+        <ListingForm listings={listings} setListings={setListings} />
+      </div>
     </header>
   )
 }
